@@ -4,10 +4,12 @@ import {
   REMOVE_ITEM,
   INCREASE_AMOUNT,
   DECREASE_AMOUNT,
+  DISPLAY_ITEMS,
+  LOADING,
 } from "./actions"
 
 const reducer = (state, action) => {
-  return <div>reducer</div>
+  return state
 }
 
 export default reducer
