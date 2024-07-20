@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useReducer, useState } from "react"
 import reducer from "./reducer"
+import items from "./data"
 
 import {
   CLEAR_CART,
@@ -9,7 +10,7 @@ import {
   DISPLAY_ITEMS,
   LOADING,
 } from "./actions"
-
+import cartItems from "./data"
 
 const AppContext = createContext()
 
@@ -17,10 +18,13 @@ export const useAppContext = () => useContext(AppContext)
 
 const initialState = {
   isLoading: false,
-  cart: [],
+  cart: new Map(cartItems.map((item) => [item.id, item])),
 }
+
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
+
+  console.log(state.cart)
   return (
     <AppContext.Provider value={{ ...state }}>{children}</AppContext.Provider>
   )
