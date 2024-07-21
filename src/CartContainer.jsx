@@ -2,7 +2,7 @@ import CartItem from "./CartItem"
 import { useAppContext } from "./context"
 
 const CartContainer = () => {
-  const { clearCart, cart, removeItem } = useAppContext()
+  const { clearCart, cart } = useAppContext()
   const cartArray = Array.from(cart.entries())
 
   if (cartArray.length === 0) {
@@ -26,7 +26,7 @@ const CartContainer = () => {
       <div>
         {cartArray.map((cartItem) => {
           const [id, item] = cartItem
-          return <CartItem key={id} {...item} removeItem={removeItem} />
+          return <CartItem key={id} {...item} />
         })}
       </div>
       {/* cart footer */}
