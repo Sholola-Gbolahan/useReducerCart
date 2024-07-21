@@ -35,8 +35,16 @@ const AppProvider = ({ children }) => {
     return dispatch({ type: INCREASE_AMOUNT, payload: { id } })
   }
 
+  //1. Create function to dispatch action
+  const decrease = (id) => {
+    return dispatch({ type: DECREASE_AMOUNT, payload: { id } })
+  }
+
   return (
-    <AppContext.Provider value={{ ...state, clearCart, removeItem, increase }}>
+    <AppContext.Provider
+      //2. Pass the function down to be used globally
+      value={{ ...state, clearCart, removeItem, increase, decrease }}
+    >
       {children}
     </AppContext.Provider>
   )
